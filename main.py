@@ -15,20 +15,22 @@ subscript_folder = "./subscripts/"
 starting_dir = os.getcwd()
 working_folder = "./work_area/"
 
-
+csv_clean = "True"
 #Source file Prep
-source_file_list = os.listdir(source_folder)
-if debug == "True":
-    print(source_file_list)
-for filename in source_file_list:
-    current_file_to_clean = source_folder + filename
-    #Remove first three lines in each source file to create legitimate CSV file
-    for n in range(1,4):
-        with open(current_file_to_clean, 'r+') as fp:
-            lines = fp.readlines()
-            fp.seek(0)
-            fp.truncate()
-            fp.writelines(lines[1:])
+# If csv_clean is set to True - Clean CSV Files
+if csv_clean == "True":
+    source_file_list = os.listdir(source_folder)
+    if debug == "True":
+        print(source_file_list)
+    for filename in source_file_list:
+        current_file_to_clean = source_folder + filename
+        #Remove first three lines in each source file to create legitimate CSV file
+        for n in range(1,4):
+            with open(current_file_to_clean, 'r+') as fp:
+                lines = fp.readlines()
+                fp.seek(0)
+                fp.truncate()
+                fp.writelines(lines[1:])
 
 #Scriptlet Prep Area - move appropriate files into working folders
 ##Starting with IPv4 Address Objects
