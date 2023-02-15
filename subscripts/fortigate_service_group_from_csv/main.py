@@ -18,7 +18,7 @@ with open(input_file) as csvfile:
         service_list = service.split(",")
         for iterance in service_list:
             #print(type(iterance))
-            string_of_members += iterance + " "
+            string_of_members += '"' + iterance + '" '
         current_string = 'config firewall service group\nedit "'+ name + '"\nset member ' + string_of_members + '\nnext\nend\n'
         string += current_string
 

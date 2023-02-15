@@ -18,7 +18,8 @@ with open(input_file) as csvfile:
         address_list = address.split(",")
         for iterance in address_list:
             #print(type(iterance))
-            string_of_members += iterance + " "
+            string_of_members += '"' + iterance + '" '
+        #Add quote to beginning of member string
         current_string = 'config firewall addrgrp\nedit "'+ name + '"\nset member ' + string_of_members + '\nnext\nend\n'
         string += current_string
 
